@@ -3,7 +3,23 @@ import ListBooks from './ListBooks';
 import FormBook from './FormBook';
 
 const DisplayBook = () => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([
+    {
+      title: 'Harry Potter',
+      author: 'J.K. Rowling',
+      category: 'Fantasy',
+    },
+    {
+      title: 'Pride and Prejudice',
+      author: 'Author',
+      category: 'Classic',
+    },
+    {
+      title: 'Adventurous life',
+      author: 'J. Watson',
+      category: 'Action',
+    },
+  ]);
 
   useEffect(() => {
     const storedBooks = localStorage.getItem('books');
