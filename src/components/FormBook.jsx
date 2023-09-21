@@ -21,8 +21,6 @@ const FormBook = ({ addBook }) => {
     const { title, category } = formData;
 
     if (title.trim() === '' || category === 'Category') {
-      // eslint-disable-next-line
-      alert('Please fill in all fields');
       return;
     }
 
@@ -52,17 +50,14 @@ const FormBook = ({ addBook }) => {
           value={formData.title}
           onChange={handleInputChange}
         />
-        <select
+        <input
           className="form-input"
-          name="category"
-          value={formData.category}
+          type="text"
+          name="title"
+          placeholder="Book author"
+          value={formData.author}
           onChange={handleInputChange}
-        >
-          <option value="Category">Category</option>
-          <option value="Action">Action</option>
-          <option value="Science Fiction">Science Fiction</option>
-          <option value="Economy">Economy</option>
-        </select>
+        />
         <button type="submit" className="form-button">
           ADD BOOK
         </button>
