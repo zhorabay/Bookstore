@@ -1,0 +1,16 @@
+body {
+  padding: 4%;
+  background-color: #f5f6fa;
+}
+
+.content {
+  padding: 4%;
+}
+
+#root {
+  margin: 0;
+  padding: 0 0 8% 0;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fafafa;
+}
