@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Homepage from './components/Homepage';
 import Categories from './components/Categories';
@@ -10,14 +10,10 @@ function App() {
       <div className="app">
         <Navigation />
         <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Homepage />
-            </Route>
-            <Route path="/categories">
-              <Categories />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Homepage />} />
+            <Route path="/categories" element={<Categories />} />
+          </Routes>
         </div>
       </div>
     </Router>

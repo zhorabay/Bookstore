@@ -1,0 +1,124 @@
+.list-container {
+  display: grid;
+  grid-template-columns: 550px 300px 400px;
+  width: 85%;
+  padding: 12px 0;
+  gap: 15px;
+  border: 0.7px solid rgba(151, 150, 150, 0.448);
+  margin: 15px auto;
+  margin-top: 30px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.book-main {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.book-id {
+  visibility: hidden;
+}
+
+.book-category {
+  color: grey;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.book-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.book-author {
+  color: rgb(66, 180, 255);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.book-additional {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgb(66, 180, 255);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.book-additional li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.remove-book {
+  padding: 2px 10px;
+  border-right: 0.7px solid rgba(151, 150, 150, 0.448);
+  border-left: 0.7px solid rgba(151, 150, 150, 0.448);
+}
+
+.percentage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.percentage-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 0.7px solid rgba(151, 150, 150, 0.448);
+  padding-right: 80px;
+}
+
+.number {
+  font-size: 30px;
+  margin: 0;
+}
+
+.completed {
+  color: grey;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+}
+
+.chapter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 40px;
+}
+
+.current-chapter {
+  color: grey;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.chapter-display {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.list-button {
+  padding: 4px 10px;
+  color: white;
+  background-color: rgb(66, 180, 255);
+  border-radius: 4px;
+  border: none;
+  font-size: 13px;
+  font-weight: 300;
+}
