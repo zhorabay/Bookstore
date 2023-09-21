@@ -1,52 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import prgrs from '../images/prgrs.png';
+import '../styles/ListBooks.css';
 
-class Book extends Component {
-  handleRemoveClick = () => {
-    const { id } = this.props;
-    this.props.removeBook(id);
+const Book = ({
+  id, title, author, category, removeBook,
+}) => {
+  const handleRemoveClick = () => {
+    removeBook(id);
   };
 
-  render() {
-    const {
-      id, title, author, category,
-    } = this.props;
-
-    return (
-      <div className="list-container">
-        <div className="description">
-          <ul className="book-main">
-            <li className="book-id">
-              ID:
-              {' '}
-              {id}
-            </li>
-            <li className="book-category">
-              Category:
-              {' '}
-              {category}
-            </li>
-            <li className="book-title">
-              Title:
-              {' '}
-              {title}
-            </li>
-            <li className="book-author">
-              Author:
-              {' '}
-              {author}
-            </li>
-          </ul>
-          <ul className="book-additional">
-            <li>Comments</li>
-            <li className="remove-book">
-              <button type="button" onClick={this.handleRemoveClick}>Remove</button>
-            </li>
-            <li>Edit</li>
-          </ul>
-        </div>
+  return (
+    <div className="list-container">
+      <div className="description">
+        <ul className="book-main">
+          <li className="book-id">
+            ID:
+            {' '}
+            {id}
+          </li>
+          <li className="book-category">
+            Category:
+            {' '}
+            {category}
+          </li>
+          <li className="book-title">
+            Title:
+            {' '}
+            {title}
+          </li>
+          <li className="book-author">
+            Author:
+            {' '}
+            {author}
+          </li>
+        </ul>
+        <ul className="book-additional">
+          <li>Comments</li>
+          <li className="remove-book">
+            <button type="button" onClick={handleRemoveClick}>Remove</button>
+          </li>
+          <li>Edit</li>
+        </ul>
+      </div>
+      <div className="progress-container">
         <div className="percentage">
-          <img src="progress" alt="here should be progress" />
+          <img src={prgrs} alt="here should be progress" className="img" />
           <div className="percentage-text">
             <p className="number">64%</p>
             <p className="completed">Completed</p>
@@ -58,9 +57,9 @@ class Book extends Component {
           <button type="button" className="list-button">UPGRADE PROGRESS</button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Book.propTypes = {
   id: PropTypes.string.isRequired,

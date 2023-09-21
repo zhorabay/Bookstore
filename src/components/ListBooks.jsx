@@ -1,34 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
+import '../styles/ListBooks.css';
 
-class ListBooks extends Component {
-  render() {
-    const { books, removeBook } = this.props;
-
-    if (!books || books.length === 0) {
-      return <p>No books to display</p>;
-    }
-
-    return (
-      <div>
-        {books.map((book) => (
-          <Book
-            key={book.id}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-            category={book.category}
-            removeBook={removeBook}
-          />
-        ))}
-      </div>
-    );
+const ListBooks = ({ books, removeBook }) => {
+  if (!books || books.length === 0) {
+    return <p className="hidden-p">No books to display</p>;
   }
-}
+
+  return (
+    <div>
+      {books.map((book) => (
+        <Book
+          key={book.id}
+          id={book.id}
+          title={book.title}
+          author={book.author}
+          category={book.category}
+          removeBook={removeBook}
+        />
+      ))}
+    </div>
+  );
+};
 
 ListBooks.propTypes = {
-  books: PropTypes.array,
+  books: PropTypes.string.isRequired,
   removeBook: PropTypes.func.isRequired,
 };
 

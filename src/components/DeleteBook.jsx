@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import ListBooks from './ListBooks';
 import FormBook from './FormBook';
 
-class DeleteBook extends Component {
-  constructor() {
-    super();
-    this.state = {
-      books: [],
-    };
-  }
+const DeleteBook = () => {
+  const [books, setBooks] = useState([]);
 
-  addBook = (newBook) => {
-    this.setState((prevState) => ({
-      books: [...prevState.books, newBook],
-    }));
+  useEffect(() => {
+    const storedBooks = localStorage.getItem('books');
+    if (storedBooks) {
+      setBooks(JSON.parse(storedBooks));
+    }
+  }, []);
+
+  const addBook = (newBook) => {
+    setBooks((prevBooks) => [...prevBooks, newBook]);
   };
 
-  removeBook = (id) => {
-    this.setState((prevState) => ({
-      books: prevState.books.filter((book) => book.id !== id),
-    }));
+  const removeBook = (id) => {
+    setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
   };
 
-  render() {
-    return (
-      <div>
-        <ListBooks books={this.state.books} removeBook={this.removeBook} />
-        <FormBook addBook={this.addBook} />
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    localStorage.setItem('books', JSON.stringify(books));
+  }, [books]);
+
+  return (
+    <div>
+      <ListBooks books={books} removeBook={removeBook} />
+      <FormBook addBook={addBook} />
+    </div>
+  );
+};
 
 export default DeleteBook;

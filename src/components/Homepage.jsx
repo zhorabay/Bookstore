@@ -1,12 +1,10 @@
-import ListBooks from './ListBooks';
-import FormBook from './FormBook';
+import Book from './Book';
 import DeleteBook from './DeleteBook';
 
 const Homepage = () => (
-  <div className="pt-5 mt-5">
-    <ListBooks />
+  <div>
+    <Book />
     <DeleteBook />
-    <FormBook />
   </div>
 );
 
