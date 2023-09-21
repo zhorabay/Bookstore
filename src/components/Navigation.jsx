@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import '../styles/Navigation.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import '../styles/Navigation.css';
 
 const Navigation = () => {
   return (
@@ -17,7 +18,7 @@ const Navigation = () => {
         </li>
       </ul>
       <div className="signin">
-        <FontAwesomeIcon icon="fas fa-user" />
+        <FontAwesomeIcon className="faUser" icon={faUser} />
       </div>
     </div>
   );

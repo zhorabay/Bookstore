@@ -6,6 +6,7 @@
   border-radius: 4px;
   border: 1px solid #e8e8e8;
   padding: 2rem;
+  margin-bottom: 0.938rem;;
 }
 
 .description {
@@ -13,7 +14,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 40%;
+  width: 50%;
 }
 
 .book-main {
@@ -79,6 +80,18 @@
   padding: 2px 10px;
   border-right: 0.7px solid rgba(151, 150, 150, 0.448);
   border-left: 0.7px solid rgba(151, 150, 150, 0.448);
+}
+
+.remove-book button {
+  background: none;
+  border: none;
+  color: #4386bf;
+  font-family: "Roboto Slab", serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  cursor: pointer;
+  gap: 6px;
+  padding: 0;
 }
 
 .progress-container {

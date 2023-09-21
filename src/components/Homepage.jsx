@@ -1,10 +1,8 @@
-import Book from './Book';
-import DeleteBook from './DeleteBook';
+import DisplayBook from './DisplayBook';
 
 const Homepage = () => (
   <div>
-    <Book />
-    <DeleteBook />
+    <DisplayBook />
   </div>
 );
 

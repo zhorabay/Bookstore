@@ -6,8 +6,7 @@
   border-bottom: 1px solid #e8e8e8;
   display: flex;
   align-items: center;
-  grid-gap: 40px;
-  gap: 40px;
+  justify-content: space-between;
 }
 
 .navbar-tabs {
@@ -15,6 +14,7 @@
   align-items: center;
   gap: 30px;
   margin: 0;
+  padding: 0;
 }
 
 .navbar-tabs li {
@@ -26,6 +26,7 @@
   font-size: 1.875rem;
   font-weight: 700;
   color: #0290ff;
+  cursor: pointer;
 }
 
 .navbar-books {
@@ -46,11 +47,17 @@
   text-decoration: none;
 }
 
-.icon-button {
+.faUser {
+  color: #0290ff;
+  margin-top: 30%;
+  margin-left: 35%;
+}
+
+.signin {
   cursor: pointer;
   width: 2.813rem;
   height: 2.813rem;
   border-radius: 50%;
-  border: 1px solid #e8e8e8;
-  background-color: #fff;
+  border: solid 1px #e8e8e8;
+  background-color: white;
 }

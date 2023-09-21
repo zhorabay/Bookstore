@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ListBooks from './ListBooks';
 import FormBook from './FormBook';
 
-const DeleteBook = () => {
+const DisplayBook = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -32,4 +32,4 @@ const DeleteBook = () => {
   );
 };
 
-export default DeleteBook;
+export default DisplayBook;

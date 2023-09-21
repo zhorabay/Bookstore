@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
-import '../styles/ListBooks.css';
 
 const ListBooks = ({ books, removeBook }) => {
   if (!books || books.length === 0) {

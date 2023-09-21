@@ -20,12 +20,10 @@ const Book = ({
             {id}
           </li>
           <li className="book-category">
-            Category:
             {' '}
             {category}
           </li>
           <li className="book-title">
-            Title:
             {' '}
             {title}
           </li>
