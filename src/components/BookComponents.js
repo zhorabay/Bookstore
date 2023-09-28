@@ -1,14 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import FormBook from './FormBook';
 import BookItem from './BookItem';
+import { getBookItems } from '../features/book/bookSlice';
 
 const BookContainer = () => {
-  const { booksByItem, isLoading, error } = useSelector((state) => state.book);
+  const { books, isLoading, error } = useSelector((state) => state.book);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBookItems());
+  }, [dispatch]);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
     return (
       <div>
@@ -18,17 +24,17 @@ const BookContainer = () => {
     );
   }
 
-  const itemIds = Object.keys(booksByItem);
+  const itemIds = Object.keys(books);
 
   return (
     <section className="book">
       {itemIds.map((itemId) => (
         <div key={itemId}>
           <ul>
-            {booksByItem[itemId].map((book) => (
+            {books[itemId].map((book) => (
               <BookItem
-                key={book.id}
-                id={book.id}
+                key={itemId}
+                itemId={itemId}
                 title={book.title}
                 author={book.author}
                 category={book.category}
@@ -38,7 +44,6 @@ const BookContainer = () => {
         </div>
       ))}
       <footer>
-        <hr />
         <FormBook />
       </footer>
     </section>

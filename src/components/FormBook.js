@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import '../styles/FormBook.css';
-import { addBooks } from '../features/book/bookSlice';
+import { addBooksData } from '../features/book/bookSlice';
 
 const FormBook = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     title: '',
+    author: '',
     category: 'Category',
   });
 
@@ -20,22 +21,19 @@ const FormBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { title, category } = formData;
+    const {
+      title, author, category,
+    } = formData;
 
-    if (title.trim() === '' || category === 'Category') {
+    if (title.trim() === '' || author.trim() === '' || category === 'Category') {
       return;
     }
 
-    const newBook = {
-      id: Math.random().toString(),
-      title,
-      category,
-    };
-
-    dispatch(addBooks(newBook));
+    dispatch(addBooksData(formData));
 
     setFormData({
       title: '',
+      author: '',
       category: 'Category',
     });
   };
@@ -50,6 +48,14 @@ const FormBook = () => {
           name="title"
           placeholder="Book title"
           value={formData.title}
+          onChange={handleInputChange}
+        />
+        <input
+          className="form-input"
+          type="text"
+          name="author"
+          placeholder="Book author"
+          value={formData.author}
           onChange={handleInputChange}
         />
         <select

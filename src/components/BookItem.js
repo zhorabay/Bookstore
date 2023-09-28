@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import prgrs from '../images/prgrs.png';
-import { removeBook } from '../features/book/bookSlice';
+import { removeBooks } from '../features/book/bookSlice';
 import '../styles/ListBooks.css';
 
 const BookItem = ({
-  id, author, title, category,
+  itemId, author, title, category,
 }) => {
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const BookItem = ({
           <li className="book-id">
             ID:
             {' '}
-            {id}
+            {itemId}
           </li>
           <li className="book-category">
             {category}
@@ -36,7 +36,7 @@ const BookItem = ({
             <button
               type="button"
               onClick={() => {
-                dispatch(removeBook(id));
+                dispatch(removeBooks({ itemId }));
               }}
             >
               Remove
@@ -66,7 +66,7 @@ const BookItem = ({
 };
 
 BookItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  itemId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
