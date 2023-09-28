@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import '../styles/FormBook.css';
 import { addBooksData } from '../features/book/bookSlice';
 
@@ -11,31 +12,31 @@ const FormBook = () => {
     category: 'Category',
   });
 
+  setFormData({
+    title: '',
+    author: '',
+    category: 'Category',
+  });
+
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { target: { name, value } } = e;
+    if (name === 'title') {
+      setFormData(value);
+    } else if (name === 'author') {
+      setFormData(value);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {
-      title, author, category,
-    } = formData;
-
-    if (title.trim() === '' || author.trim() === '' || category === 'Category') {
-      return;
-    }
-
-    dispatch(addBooksData(formData));
-
-    setFormData({
+    const formData = {
+      item_id: uuidv4(),
       title: '',
       author: '',
       category: 'Category',
-    });
+    };
+
+    dispatch(addBooksData(formData));
   };
 
   return (
