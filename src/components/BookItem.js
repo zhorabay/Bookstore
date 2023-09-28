@@ -1,14 +1,13 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import prgrs from '../images/prgrs.png';
+import { removeBook } from '../features/book/bookSlice';
 import '../styles/ListBooks.css';
 
-const Book = ({
-  id, title, author, category, removeBook,
+const BookItem = ({
+  id, author, title, category,
 }) => {
-  const handleRemoveClick = () => {
-    removeBook(id);
-  };
+  const dispatch = useDispatch();
 
   return (
     <div className="list-container">
@@ -20,11 +19,9 @@ const Book = ({
             {id}
           </li>
           <li className="book-category">
-            {' '}
             {category}
           </li>
           <li className="book-title">
-            {' '}
             {title}
           </li>
           <li className="book-author">
@@ -36,7 +33,14 @@ const Book = ({
         <ul className="book-additional">
           <li>Comments</li>
           <li className="remove-book">
-            <button type="button" onClick={handleRemoveClick}>Remove</button>
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(removeBook(id));
+              }}
+            >
+              Remove
+            </button>
           </li>
           <li>Edit</li>
         </ul>
@@ -52,19 +56,20 @@ const Book = ({
         <div className="chapter">
           <p className="current-chapter">CURRENT CHAPTER</p>
           <p className="chapter-display">Chapter 17</p>
-          <button type="button" className="list-button">UPGRADE PROGRESS</button>
+          <button type="button" className="list-button">
+            UPGRADE PROGRESS
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-Book.propTypes = {
+BookItem.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
-  removeBook: PropTypes.func.isRequired,
 };
 
-export default Book;
+export default BookItem;

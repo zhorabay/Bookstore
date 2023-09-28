@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import '../styles/FormBook.css';
+import { addBooks } from '../features/book/bookSlice';
 
-const FormBook = ({ addBook }) => {
+const FormBook = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     title: '',
     category: 'Category',
@@ -30,7 +32,7 @@ const FormBook = ({ addBook }) => {
       category,
     };
 
-    addBook(newBook);
+    dispatch(addBooks(newBook));
 
     setFormData({
       title: '',
@@ -50,24 +52,22 @@ const FormBook = ({ addBook }) => {
           value={formData.title}
           onChange={handleInputChange}
         />
-        <input
-          className="form-input"
-          type="text"
-          name="title"
-          placeholder="Book author"
-          value={formData.author}
+        <select
+          name="category"
+          value={formData.category}
           onChange={handleInputChange}
-        />
+        >
+          <option value="Category">Category</option>
+          <option value="Action">Action</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Economy">Economy</option>
+        </select>
         <button type="submit" className="form-button">
           ADD BOOK
         </button>
       </form>
     </div>
   );
-};
-
-FormBook.propTypes = {
-  addBook: PropTypes.func.isRequired,
 };
 
 export default FormBook;
