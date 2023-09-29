@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import prgrs from '../images/prgrs.png';
-import { removeBooks } from '../features/book/bookSlice';
+import { removeBooks, getBookItems } from '../features/book/bookSlice';
 import '../styles/ListBooks.css';
 
 const BookItem = ({
@@ -10,7 +10,7 @@ const BookItem = ({
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(removeBooks({ item_id: itemId }));
+    dispatch(removeBooks({ item_id: itemId })).then(() => { dispatch(getBookItems()); });
   };
 
   return (

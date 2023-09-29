@@ -25,25 +25,21 @@ const BookContainer = () => {
     );
   }
 
-  const itemIds = Object.keys(books);
-
   return (
     <section className="book">
-      {itemIds.map((itemId) => (
-        <div key={itemId}>
-          <div>
-            {books[itemId].map((book) => (
-              <BookItem
-                key={itemId}
-                itemId={itemId}
-                title={book.title}
-                author={book.author}
-                category={book.category}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
+      {
+        Object.entries(books).map(([itemId, book]) => (
+          Array.isArray(book) && book.map((item) => (
+            <BookItem
+              key={itemId}
+              itemId={itemId}
+              title={item.title}
+              author={item.author}
+              category={item.category}
+            />
+          ))
+        ))
+      }
       <footer>
         <FormBook />
       </footer>

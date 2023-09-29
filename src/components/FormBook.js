@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles/FormBook.css';
-import { addBooksData } from '../features/book/bookSlice';
+import { addBooksData, getBookItems } from '../features/book/bookSlice';
 
 const FormBook = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const FormBook = () => {
       item_id: uuidv4(),
       ...inputData,
     };
-    dispatch(addBooksData(formData));
+    dispatch(addBooksData(formData)).then(() => { dispatch(getBookItems()); });
   };
 
   return (
