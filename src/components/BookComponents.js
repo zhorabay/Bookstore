@@ -5,16 +5,17 @@ import BookItem from './BookItem';
 import { getBookItems } from '../features/book/bookSlice';
 
 const BookContainer = () => {
-  const { books, isLoading, error } = useSelector((state) => state.book);
+  const { books, status, error } = useSelector((state) => state.book);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getBookItems());
   }, [dispatch]);
 
-  if (isLoading) {
+  if (status === 'pending') {
     return <div>Loading...</div>;
   }
+
   if (error) {
     return (
       <div>
@@ -30,7 +31,7 @@ const BookContainer = () => {
     <section className="book">
       {itemIds.map((itemId) => (
         <div key={itemId}>
-          <ul>
+          <div>
             {books[itemId].map((book) => (
               <BookItem
                 key={itemId}
@@ -40,7 +41,7 @@ const BookContainer = () => {
                 category={book.category}
               />
             ))}
-          </ul>
+          </div>
         </div>
       ))}
       <footer>

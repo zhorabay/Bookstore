@@ -6,13 +6,7 @@ import { addBooksData } from '../features/book/bookSlice';
 
 const FormBook = () => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    category: 'Category',
-  });
-
-  setFormData({
+  const [inputData, setInpuData] = useState({
     title: '',
     author: '',
     category: 'Category',
@@ -20,22 +14,18 @@ const FormBook = () => {
 
   const handleInputChange = (e) => {
     const { target: { name, value } } = e;
-    if (name === 'title') {
-      setFormData(value);
-    } else if (name === 'author') {
-      setFormData(value);
-    }
+    setInpuData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
       item_id: uuidv4(),
-      title: '',
-      author: '',
-      category: 'Category',
+      ...inputData,
     };
-
     dispatch(addBooksData(formData));
   };
 
@@ -48,7 +38,7 @@ const FormBook = () => {
           type="text"
           name="title"
           placeholder="Book title"
-          value={formData.title}
+          value={inputData.title}
           onChange={handleInputChange}
         />
         <input
@@ -56,12 +46,12 @@ const FormBook = () => {
           type="text"
           name="author"
           placeholder="Book author"
-          value={formData.author}
+          value={inputData.author}
           onChange={handleInputChange}
         />
         <select
           name="category"
-          value={formData.category}
+          value={inputData.category}
           onChange={handleInputChange}
         >
           <option value="Category">Category</option>

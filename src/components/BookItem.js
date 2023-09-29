@@ -9,6 +9,10 @@ const BookItem = ({
 }) => {
   const dispatch = useDispatch();
 
+  const handleDelete = () => {
+    dispatch(removeBooks({ item_id: itemId }));
+  };
+
   return (
     <div className="list-container">
       <div className="description">
@@ -35,9 +39,7 @@ const BookItem = ({
           <li className="remove-book">
             <button
               type="button"
-              onClick={() => {
-                dispatch(removeBooks({ itemId }));
-              }}
+              onClick={() => handleDelete()}
             >
               Remove
             </button>

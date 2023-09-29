@@ -5,7 +5,7 @@ const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstor
 
 const initialState = {
   books: [],
-  isLoading: true,
+  status: null,
   error: null,
 };
 
@@ -21,7 +21,7 @@ export const getBookItems = createAsyncThunk(
   },
 );
 
-export const addBooksData = createAsyncThunk('books/addBooksData', async (bookData, thunkAPI) => {
+export const addBooksData = createAsyncThunk('book/addBooksData', async (bookData, thunkAPI) => {
   try {
     const resp = await axios.post(url, {
       item_id: bookData.item_id,
@@ -35,7 +35,7 @@ export const addBooksData = createAsyncThunk('books/addBooksData', async (bookDa
   }
 });
 
-export const removeBooks = createAsyncThunk('books/removeBooks', async ({ thunkAPI, item_id }) => {
+export const removeBooks = createAsyncThunk('book/removeBooks', async ({ thunkAPI, item_id }) => {
   try {
     const resp = await axios.delete(`${url}/${item_id}`);
     return resp.data;
@@ -51,14 +51,36 @@ const bookSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getBookItems.pending, (state) => {
-        state.isLoading = true;
+        state.status = 'pending';
       })
       .addCase(getBookItems.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = 'fulfilled';
         state.books = action.payload;
       })
       .addCase(getBookItems.rejected, (state, action) => {
-        state.isLoading = false;
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
+      .addCase(addBooksData.pending, (state) => {
+        state.status = 'pending';
+      })
+      .addCase(addBooksData.fulfilled, (state, action) => {
+        state.status = 'fulfilled';
+        state.books = action.payload;
+      })
+      .addCase(addBooksData.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
+      .addCase(removeBooks.pending, (state) => {
+        state.status = 'pending';
+      })
+      .addCase(removeBooks.fulfilled, (state, action) => {
+        state.status = 'fulfilled';
+        state.books = action.payload;
+      })
+      .addCase(removeBooks.rejected, (state, action) => {
+        state.status = 'rejected';
         state.error = action.payload;
       });
   },
