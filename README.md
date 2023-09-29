@@ -28,8 +28,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[User can see calculator]**
-- **[User can do simple math calculations]**
+- **[User can add book to the list]**
+- **[User can remove book from the list]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -43,7 +43,7 @@ To get a local copy up and running, follow these steps.
 - Node
 - Code Editor
 
-In order to run this project you need:
+To run this project you need:
 
 To get a local copy up and running follow these simple example steps.
 
@@ -87,14 +87,14 @@ Feel free to check the [issues page](https://github.com/zhorabay/Bookstore/issue
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, pplease, feel free to star the repository and share it with others who might benefit from it.
+If you like this project, please, feel free to give a star to the repository and share it with others who might benefit from it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse team and Code reviewers who helped us with creating this project.
+I want to extend my heartfelt gratitude to the Microverse team and our dedicated code reviewers, whose invaluable assistance was instrumental in bringing this project to fruition. I am also deeply appreciative of my husband and daughter for their unwavering support throughout this journey. Additionally, I wish to acknowledge and thank [Justice Bajeri](https://github.com/Strangeal) for his expert guidance in seamlessly integrating the website with the API.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
