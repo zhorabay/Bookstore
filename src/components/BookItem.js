@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import prgrs from '../images/prgrs.png';
 import { removeBooks, getBookItems } from '../features/book/bookSlice';
-import '../styles/ListBooks.css';
+import '../styles/BookItem.css';
 
 const BookItem = ({
   itemId, author, title, category,
