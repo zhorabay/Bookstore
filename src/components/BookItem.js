@@ -1,13 +1,16 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import prgrs from '../images/prgrs.png';
+import { removeBooks, getBookItems } from '../features/book/bookSlice';
 import '../styles/ListBooks.css';
 
-const Book = ({
-  id, title, author, category, removeBook,
+const BookItem = ({
+  itemId, author, title, category,
 }) => {
-  const handleRemoveClick = () => {
-    removeBook(id);
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(removeBooks({ item_id: itemId })).then(() => { dispatch(getBookItems()); });
   };
 
   return (
@@ -17,14 +20,12 @@ const Book = ({
           <li className="book-id">
             ID:
             {' '}
-            {id}
+            {itemId}
           </li>
           <li className="book-category">
-            {' '}
             {category}
           </li>
           <li className="book-title">
-            {' '}
             {title}
           </li>
           <li className="book-author">
@@ -36,7 +37,12 @@ const Book = ({
         <ul className="book-additional">
           <li>Comments</li>
           <li className="remove-book">
-            <button type="button" onClick={handleRemoveClick}>Remove</button>
+            <button
+              type="button"
+              onClick={() => handleDelete()}
+            >
+              Remove
+            </button>
           </li>
           <li>Edit</li>
         </ul>
@@ -52,19 +58,20 @@ const Book = ({
         <div className="chapter">
           <p className="current-chapter">CURRENT CHAPTER</p>
           <p className="chapter-display">Chapter 17</p>
-          <button type="button" className="list-button">UPGRADE PROGRESS</button>
+          <button type="button" className="list-button">
+            UPGRADE PROGRESS
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-Book.propTypes = {
-  id: PropTypes.string.isRequired,
+BookItem.propTypes = {
+  itemId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
-  removeBook: PropTypes.func.isRequired,
 };
 
-export default Book;
+export default BookItem;
