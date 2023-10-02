@@ -70,6 +70,7 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@zhorabay](https://github.com/zhorabay)
 - LinkedIn: [@zhorabay](https://www.linkedin.com/mwlite/in/zhorabay)
 - Twitter: [@zhorabay](https://twitter.com/AssemZhorabay)
+- Wellfound: [@zhorabay](https://wellfound.com/u/assem-zhorabay)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
